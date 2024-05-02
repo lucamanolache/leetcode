@@ -1,19 +1,19 @@
 class Solution {
     public int findMaxK(int[] nums) {
-        if (nums.length == 0 || nums.length == 1)
-            return -1;
-        
-        Arrays.sort(nums);
-        
-        int i = 0, j = nums.length - 1;
-        while (i != j && nums[i] < 0 && nums[j] > 0) {
-            if (-nums[i] == nums[j])
-                return nums[j];
-            else if (-nums[i] > nums[j])
-                i++;
-            else
-                j--;
+        int ans = -1; 
+
+        // A set to store seen numbers
+        Set<Integer> seen = new HashSet<>();
+
+        for (int num : nums) { 
+            int absNum = Math.abs(num);
+
+            // If the absolute value is greater than the current maximum and its negation is seen
+            if (absNum > ans && seen.contains(-num))
+                ans = absNum; 
+            seen.add(num); // Insert the current number into the set
         }
-        return -1;
+
+        return ans;
     }
 }

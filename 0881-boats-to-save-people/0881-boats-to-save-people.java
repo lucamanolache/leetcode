@@ -6,7 +6,7 @@ class Solution {
             if (people[left] + people[right] > limit) {
                 cnt++;
                 right--;
-            } else if (people[left] + people[right] <= limit) {
+            } else {
                 cnt++;
                 left++;
                 right--;

@@ -12,7 +12,8 @@ int minimumPushes(char* word) {
     qsort(counts, sizeof(counts)/sizeof(*counts), sizeof(*counts), comp);
     
     int sum = 0;
-    for (int i = 8; i < 26 + 8; ++i) sum += counts[i - 8] * (i / 8);
+    int* cts = counts;
+    for (int i = 8; i < 26 + 8 && *cts != 0; i++) sum += *(cts++) * (i / 8);
     
     return sum;
 }
